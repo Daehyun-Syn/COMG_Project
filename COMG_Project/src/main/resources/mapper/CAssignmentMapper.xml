@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.poly.persistance.mapper.ICAssignmentMapper">
+
+    <insert id="InsertAssignmentInfo" parameterType="CAssignmentDTO">
+        INSERT INTO ASSIGNMENT_INFO (ASSIGNMENT_ROOM_NAME,
+                                     ASSIGNMENT_ROOM_CONTENTS,
+                                     ASSIGNMENT_ROOM_CREATER,
+                                     ASSIGNMENT_DEADLINE,
+                                     FK_GROUP_SEQ,
+                                     FILE_SEQ,
+                                     ASSIGNMENT_PROFILE_SEQ)
+        VALUES (#{assignment_room_name},
+                #{assignment_room_contents},
+                #{assignment_room_creater},
+                #{assignment_deadline},
+                #{fk_group_seq},
+                #{file_seq},
+                #{assignment_profile_seq})
+    </insert>
+
+    <select id="getAssignmentList" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT *
+        FROM ASSIGNMENT_INFO
+        WHERE FK_GROUP_SEQ = #{fk_group_seq}
+
+    </select>
+
+    <select id="getAssignmentInfo" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT *
+        FROM ASSIGNMENT_INFO
+        WHERE ASSIGNMENT_ROOM_SEQ = #{assignment_room_seq}
+    </select>
+
+    <select id="getAssignmentCount" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT count(ASSIGNMENT_SEQ) as ASSIGNMENT_COUNT
+        FROM ASSIGNMENT_SEND_INFO
+        WHERE FK_ASSIGNMENT_ROOM_SEQ = #{fk_assignment_room_seq}
+          AND FK_GROUP_SEQ = #{fk_group_seq}
+
+    </select>
+
+    <insert id="insertAssignmentSend" parameterType="CAssignmentDTO">
+        INSERT INTO ASSIGNMENT_SEND_INFO
+        (ASSIGNMENT_USER_NAME, FK_GROUP_SEQ, FK_ASSIGNMENT_ROOM_SEQ, FK_USER_SEQ, FK_GROUP_USER_SEQ, FILE_SEQ)
+        VALUES (#{assignment_user_name}, #{fk_group_seq}, #{fk_assignment_room_seq}, #{fk_user_seq},
+                #{fk_group_user_seq}, #{file_seq})
+    </insert>
+
+    <select id="AssingSendUserList" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT U.USER_SEQ, U.USER_ID, U.USER_NAME, U.STUDENT_ID, F.SERVER_FILE_PATH
+        FROM USER_INFO U, FILE_MORE_INFO F, GROUP_USER_INFO G
+        WHERE U.FILE_SEQ = F.FK_FILE_SEQ AND G.FK_USER_SEQ = U.USER_SEQ AND G.FK_GROUP_SEQ = #{fk_group_seq} AND G.USER_AUTH = 0
+        ORDER BY U.USER_SEQ;
+    </select>
+
+    <select id="AssingSendList" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT ASSIGNMENT_SEQ, FK_USER_SEQ, ASSIGNMENT_USER_NAME, ASSIGNMENT_FEEDBACK, ASSIGNMENT_SEND_REGDATE, F.ORIGIN_FILE_NAME, F.SERVER_FILE_NAME
+        FROM ASSIGNMENT_SEND_INFO A, FILE_MORE_INFO F
+        WHERE FK_ASSIGNMENT_ROOM_SEQ = #{fk_assignment_room_seq}
+          AND FK_GROUP_SEQ = #{fk_group_seq}
+          AND A.FILE_SEQ = F.FK_FILE_SEQ
+        ORDER BY FK_USER_SEQ
+    </select>
+
+    <update id="updateFeedback" parameterType="CAssignmentDTO">
+        UPDATE ASSIGNMENT_SEND_INFO
+        SET ASSIGNMENT_FEEDBACK = #{assignment_feedback}
+        WHERE ASSIGNMENT_SEQ = #{assignment_seq}
+    </update>
+
+
+    <select id="proKakaoSend" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT COUNT(ASSIGNMENT_SEQ) AS CNT_WORK, A.ASSIGNMENT_ROOM_NAME
+        FROM ASSIGNMENT_SEND_INFO S, ASSIGNMENT_INFO A
+        WHERE A.ASSIGNMENT_ROOM_SEQ = 10 AND A.FK_GROUP_SEQ= 5
+    </select>
+
+    <select id="getAssignment" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT *
+        FROM ASSIGNMENT_INFO
+        WHERE FK_GROUP_SEQ=#{fk_group_seq}
+        Limit 5;
+    </select>
+    
+    <select id="getFeedBack" parameterType="CAssignmentDTO" resultType="CAssignmentDTO">
+        SELECT ASSIGNMENT_FEEDBACK
+        FROM ASSIGNMENT_SEND_INFO
+        WHERE FK_ASSIGNMENT_ROOM_SEQ = #{fk_assignment_room_seq} and FK_USER_SEQ = #{fk_user_seq}
+
+    </select>
+
+    <select id="getFile" parameterType="CFileDTO" resultType="CFileDTO">
+        SELECT SERVER_FILE_PATH, SERVER_FILE_NAME, ORIGIN_FILE_NAME FROM FILE_MORE_INFO
+        WHERE FK_FILE_SEQ = #{fk_file_seq}
+    </select>
+</mapper>

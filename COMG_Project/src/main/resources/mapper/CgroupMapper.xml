@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.poly.persistance.mapper.ICGroupMapper">
+
+    <!-- 그룹이름 중복 방지하기 -->
+    <select id="getGroupExists" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT
+            (CASE WHEN COUNT(1) THEN 'Y' ELSE 'N' END) AS EXISTS_YN
+        FROM GROUP_INFO
+        WHERE GROUP_NAME=#{group_name}
+    </select>
+
+    <insert id="InsertGroupInfo" parameterType="CGroupDTO">
+        INSERT INTO GROUP_INFO(
+            GROUP_NAME,
+            GROUP_REGID,
+            GROUP_INTRODUCE,
+            GROUP_PASSWORD
+        ) values(
+                    #{group_name},
+                    #{group_regid},
+                    #{group_introduce},
+                    #{group_password}
+                )
+    </insert>
+
+    <insert id="InsertFileGroupInfo" parameterType="CGroupDTO">
+        INSERT INTO GROUP_INFO(
+            GROUP_NAME,
+            GROUP_REGID,
+            GROUP_INTRODUCE,
+            GROUP_PASSWORD,
+            FILE_SEQ
+        ) values(
+                    #{group_name},
+                    #{group_regid},
+                    #{group_introduce},
+                    #{group_password},
+                    #{file_seq}
+                )
+    </insert>
+
+    <!-- 그룹 목록을 전부 가져옴 -->
+    <select id = "getGroupList" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT * FROM GROUP_USER_INFO LEFT JOIN GROUP_INFO GI on GROUP_USER_INFO.FK_GROUP_SEQ = GI.GROUP_SEQ
+        WHERE FK_USER_SEQ = #{fk_user_seq}
+    </select>
+
+    <select id="getFileList" parameterType="CFileDTO" resultType="CFileDTO">
+    SELECT SERVER_FILE_PATH FROM FILE_MORE_INFO FM, GROUP_INFO GI
+    WHERE FM.FK_FILE_SEQ = GI.FILE_SEQ
+    </select>
+
+    <select id="getGroupInfo" parameterType="CGroupDTO" resultType="CGroupDTO" >
+        SELECT * FROM GROUP_INFO
+        WHERE GROUP_SEQ = #{group_seq}
+    </select>
+
+    <select id="getFilePath" parameterType="CFileDTO" resultType="CFileDTO">
+        SELECT SERVER_FILE_PATH FROM FILE_MORE_INFO
+        WHERE FK_FILE_SEQ = #{fk_file_seq}
+    </select>
+
+    <insert id="InsertGroupUserInfo" parameterType="CGroupDTO" >
+        INSERT INTO GROUP_USER_INFO(
+            FK_USER_SEQ,
+            FK_GROUP_SEQ,
+            USER_ID
+        )VALUES (
+            #{fk_user_seq},
+            #{fk_group_seq},
+            #{user_id}
+                        )
+    </insert>
+
+    <select id="SelectGroupUserInfo" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT * FROM GROUP_USER_INFO
+        WHERE FK_USER_SEQ = #{fk_user_seq} AND FK_GROUP_SEQ =#{group_seq}
+    </select>
+
+    <delete id="DeleteGroupUser" parameterType="CGroupDTO">
+        DELETE FROM GROUP_USER_INFO
+        WHERE FK_USER_SEQ = #{fk_user_seq} and FK_GROUP_SEQ = #{fk_group_seq}
+
+    </delete>
+
+    <!-- 조인하여 그룹,그룹유저 정보 가져옴-->
+    <select id="SelectJoinGroup" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT * FROM GROUP_INFO LEFT JOIN GROUP_USER_INFO GUI on GROUP_INFO.GROUP_SEQ = GUI.FK_GROUP_SEQ
+        WHERE FK_GROUP_SEQ = #{fk_group_seq} and FK_USER_SEQ = #{fk_user_seq};
+    </select>
+
+    <update id="UpdateGroupInfo" parameterType="CGroupDTO">
+        UPDATE GROUP_INFO
+        SET GROUP_INTRODUCE = #{group_introduce}, GROUP_REGID = #{group_regid}
+        WHERE GROUP_SEQ = #{group_seq}
+    </update>
+
+    <update id="UpdateGroupFileInfo" parameterType="CGroupDTO">
+        UPDATE GROUP_INFO
+        SET GROUP_INTRODUCE = #{group_introduce}, GROUP_REGID = #{group_regid}, FILE_SEQ = #{file_seq}
+        WHERE GROUP_SEQ = #{group_seq}
+    </update>
+
+    <select id="getGroupUserCount" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT count(GROUP_USER_SEQ) as GROUP_USER_COUNT
+        FROM GROUP_USER_INFO
+        WHERE FK_GROUP_SEQ = #{fk_group_seq}
+    </select>
+
+    <select id="getGroupSeq" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT * FROM GROUP_INFO
+        WHERE GROUP_NAME = #{group_name} AND GROUP_PASSWORD =#{group_password}
+    </select>
+
+    <insert id="InsertGroupUserAdminInfo" parameterType="CGroupDTO" >
+        INSERT INTO GROUP_USER_INFO(
+            FK_USER_SEQ,
+            FK_GROUP_SEQ,
+            USER_ID,
+            USER_AUTH
+        )VALUES (
+                    #{fk_user_seq},
+                    #{fk_group_seq},
+                    #{user_id},
+                    #{user_auth}
+                )
+    </insert>
+
+    <select id="selectGroupUserSeq" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT GROUP_USER_SEQ
+        FROM GROUP_USER_INFO
+        WHERE FK_USER_SEQ = #{fk_user_seq}
+    </select>
+
+    <update id="UpdateGroupMsg" parameterType="CGroupDTO">
+        UPDATE GROUP_INFO
+        SET GROUP_MSG = #{group_msg}, GROUP_REGID = #{group_regid}
+        WHERE GROUP_SEQ = #{group_seq}
+    </update>
+</mapper>

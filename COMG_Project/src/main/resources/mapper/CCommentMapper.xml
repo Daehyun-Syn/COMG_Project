@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.poly.persistance.mapper.ICCommentMapper">
+
+    <insert id="InsertCommentInfo" parameterType="CCommentDTO">
+        INSERT INTO COMMENT_INFO  (
+                                   COMMENT_CONTENTS,
+                                   COMMENT_WRITER,
+                                   COMMENT_REG_USER,
+                                   FK_BOARD_SEQ,
+                                   FK_USER_SEQ,
+                                   FK_GROUP_SEQ,
+                                   FK_GROUP_USER_SEQ
+        )VALUES (
+            #{comment_contents},
+            #{comment_writer},
+            #{comment_writer},
+            #{fk_board_seq},
+            #{fk_user_seq},
+            #{fk_group_seq},
+            #{fk_group_user_seq}
+
+                  )
+    </insert>
+
+    <select id="getCommentList" parameterType="CCommentDTO" resultType="CCommentDTO">
+      SELECT * FROM COMMENT_INFO
+      WHERE FK_BOARD_SEQ = #{fk_board_seq}
+
+    </select>
+
+
+    <update id="UpdateCommentInfo" parameterType="CCommentDTO">
+        UPDATE COMMENT_INFO
+        SET COMMENT_CONTENTS = #{comment_contents}, COMMENT_REG_USER = #{comment_reg_user}
+        WHERE COMMENT_SEQ = #{comment_seq}
+    </update>
+
+
+    <delete id="DeleteComment" parameterType="CCommentDTO">
+        DELETE FROM COMMENT_INFO
+        WHERE COMMENT_SEQ = #{comment_seq}
+    </delete>
+</mapper>
