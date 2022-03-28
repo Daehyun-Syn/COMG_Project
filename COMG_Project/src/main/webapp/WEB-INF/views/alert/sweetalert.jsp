@@ -1,7 +1,6 @@
 <%@ page import="kopo.poly.util.CmmUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ page import="kopo.poly.util.CmmUtil" %>
 <%
     //전달받은 메시지
     String alert_title = CmmUtil.nvl((String)request.getAttribute("alert_title"));
@@ -27,7 +26,7 @@
 <script type="text/javascript">
     swal('<%=alert_title%>', "<%=alert_contents%>", '<%=alert_state%>')
         .then(function(){
-            location.href="${pageContext.request.contextPath}/<%=alert_aftersending%>";
+            location.href="/<%=alert_aftersending%>";
         });
 </script>
 </html>
