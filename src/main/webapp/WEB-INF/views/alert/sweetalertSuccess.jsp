@@ -22,12 +22,11 @@
 </body>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
-    swal({
-        title: "Wow!",
-        text: "Message!",
-        type: "success"
-    }).then(function() {
-        window.location = "/notice/NoticeList";
-    });
+    swal("피드백을 작성해 주세요:", {
+        content: "input",
+    })
+        .then((value) => {
+            swal(`You typed: ${value}`);
+        });
 </script>
 </html>
