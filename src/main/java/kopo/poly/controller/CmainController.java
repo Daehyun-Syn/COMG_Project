@@ -15,4 +15,18 @@ public class CmainController {
 
         return "/COMGmain/COMGmain";
     }
+
+    @GetMapping(value = "COMG/Cgroup")
+    public String CreateGroup(){
+
+
+        return "/COMGmain/CreateGroup";
+    }
+
+    @GetMapping(value = "COMG/alert")
+    public String alert(){
+
+
+        return "/alert/sweetalertSuccess";
+    }
 }
