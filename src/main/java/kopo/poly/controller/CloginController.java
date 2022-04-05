@@ -14,4 +14,16 @@ public class CloginController {
 
         return "/COMGlogin/COMGlogin";
     }
+
+    @GetMapping(value = "COMG/PwSearch")
+    public String PwSearch(){
+
+        return "/COMGlogin/COMGpwSearch";
+    }
+
+    @GetMapping(value = "COMG/IdSearch")
+    public String IdSearch(){
+
+        return "/COMGlogin/COMGidSearch";
+    }
 }
