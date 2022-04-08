@@ -506,10 +506,10 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-sm font-weight-bold mb-0">$14,000</p>
+                                        <p class="text-sm font-weight-bold mb-0">2022-03-22(화) ~ 2022-04-04(월)</p>
                                     </td>
                                     <td>
-                                        <span class="text-xs font-weight-bold">working</span>
+                                        <span class="text-xs font-weight-bold">진행중</span>
                                     </td>
                                     <td class="align-middle text-center">
                                         <div class="d-flex align-items-center justify-content-center">
@@ -534,15 +534,15 @@
                                                 <img src="${pageContext.request.contextPath}/resources/img/small-logos/logo-xd.svg" class="avatar avatar-sm rounded-circle me-2" alt="xd">
                                             </div>
                                             <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">정보처리실무기초</h6>
+                                                <h6 class="mb-0 text-sm">코로나 자가진단 키트</h6>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <p class="text-sm font-weight-bold mb-0">$2,300</p>
+                                        <p class="text-sm font-weight-bold mb-0">항시</p>
                                     </td>
                                     <td>
-                                        <span class="text-xs font-weight-bold">done</span>
+                                        <span class="text-xs font-weight-bold"></span>
                                     </td>
                                     <td class="align-middle text-center">
                                         <div class="d-flex align-items-center justify-content-center">
