@@ -14,4 +14,9 @@ public class CassignmentController {
         return "COMGassignment/Status";
     }
 
+    @GetMapping(value = "COMG/submit")
+    public String submit() {
+
+        return "COMGassignment/Submit";
+    }
 }
