@@ -12,21 +12,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath}/resources/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
     <title>
         COMG 홈 | COMG
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
-    <link href="${pageContext.request.contextPath}/resources/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/resources/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="${pageContext.request.contextPath}/resources/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="${pageContext.request.contextPath}/resources/css/soft-ui-dashboard.css?v=1.0.4" rel="stylesheet" />
+    <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.4" rel="stylesheet" />
+    <style>
+        .row {
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -82,7 +88,7 @@
                                 <a class="dropdown-item border-radius-md" href="javascript:;">
                                     <div class="d-flex py-1">
                                         <div class="my-auto">
-                                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3">
+                                            <img src="/img/team-2.jpg" class="avatar avatar-sm me-3">
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
                                             <h6 class="text-sm font-weight-normal mb-1">
@@ -100,7 +106,7 @@
                                 <a class="dropdown-item border-radius-md" href="javascript:;">
                                     <div class="d-flex py-1">
                                         <div class="my-auto">
-                                            <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark me-3">
+                                            <img src="/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark me-3">
                                         </div>
                                         <div class="d-flex flex-column justify-content-center">
                                             <h6 class="text-sm font-weight-normal mb-1">
@@ -159,7 +165,7 @@
             <div class="row gx-4">
                 <div class="col-auto">
                     <div class="avatar avatar-xl position-relative">
-                        <img src="${pageContext.request.contextPath}/resources/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                        <img src="/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                     </div>
                 </div>
                 <div class="col-auto my-auto">
@@ -262,7 +268,7 @@
     </div>
 
         <div class="container-fluid py-4">
-            <div class="col-12 mt-4">
+            <div class="col-12 mt-4" >
                 <div class="card mb-4">
                     <div class="card-header pb-0 p-3">
                         <h6 class="mb-1">내 목록</h6>
@@ -274,7 +280,7 @@
                                 <div class="card card-blog card-plain">
                                     <div class="position-relative">
                                         <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="${pageContext.request.contextPath}/resources/img/home-decor-1.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                            <img src="/img/home-decor-1.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
@@ -291,16 +297,44 @@
                                             <button type="button" class="btn btn-outline-primary btn-sm mb-0">입장하기</button>
                                             <div class="avatar-group mt-2">
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-1.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-1.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-2.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-2.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-3.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-3.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-4.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-4.jpg">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body px-1 pb-0">
+                                        <p class="text-gradient text-dark mb-2 text-sm">그룹 #1</p>
+                                        <a href="javascript:;">
+                                            <h5>
+                                                강서폴리텍 데이터분석과
+                                            </h5>
+                                        </a>
+                                        <p class="mb-4 text-sm">
+                                            데이터 분석과 학생들을 위한 공간입니다.
+                                        </p>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <button type="button" class="btn btn-outline-primary btn-sm mb-0">입장하기</button>
+                                            <div class="avatar-group mt-2">
+                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
+                                                    <img alt="Image placeholder" src="/img/team-1.jpg">
+                                                </a>
+                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
+                                                    <img alt="Image placeholder" src="/img/team-2.jpg">
+                                                </a>
+                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
+                                                    <img alt="Image placeholder" src="/img/team-3.jpg">
+                                                </a>
+                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
+                                                    <img alt="Image placeholder" src="/img/team-4.jpg">
                                                 </a>
                                             </div>
                                         </div>
@@ -311,7 +345,7 @@
                                 <div class="card card-blog card-plain">
                                     <div class="position-relative">
                                         <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="${pageContext.request.contextPath}/resources/img/home-decor-2.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                                            <img src="/img/home-decor-2.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
@@ -328,16 +362,16 @@
                                             <button type="button" class="btn btn-outline-primary btn-sm mb-0">입장하기</button>
                                             <div class="avatar-group mt-2">
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-3.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-3.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-4.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-4.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-1.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-1.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-2.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-2.jpg">
                                                 </a>
                                             </div>
                                         </div>
@@ -348,7 +382,7 @@
                                 <div class="card card-blog card-plain">
                                     <div class="position-relative">
                                         <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="${pageContext.request.contextPath}/resources/img/home-decor-3.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
+                                            <img src="/img/home-decor-3.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-xl">
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
@@ -365,16 +399,16 @@
                                             <button type="button" class="btn btn-outline-primary btn-sm mb-0">입장하기</button>
                                             <div class="avatar-group mt-2">
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-4.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-4.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-3.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-3.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-2.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-2.jpg">
                                                 </a>
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                                    <img alt="Image placeholder" src="${pageContext.request.contextPath}/resources/img/team-1.jpg">
+                                                    <img alt="Image placeholder" src="/img/team-1.jpg">
                                                 </a>
                                             </div>
                                         </div>
@@ -432,10 +466,10 @@
 
 
 <!--   Core JS Files   -->
-<script src="${pageContext.request.contextPath}/resources/js/core/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/core/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="/js/core/popper.min.js"></script>
+<script src="/js/core/bootstrap.min.js"></script>
+<script src="/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="/js/plugins/smooth-scrollbar.min.js"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -448,7 +482,7 @@
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="${pageContext.request.contextPath}/resources/js/soft-ui-dashboard.min.js?v=1.0.4"></script>
+<script src="/js/soft-ui-dashboard.min.js?v=1.0.4"></script>
 </body>
 
 </html>
