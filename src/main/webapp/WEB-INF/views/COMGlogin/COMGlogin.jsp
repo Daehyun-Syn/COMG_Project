@@ -11,28 +11,28 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href="${pageContext.request.contextPath}/resources/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
     <title>
         로그인 | COMG
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
-    <link href="${pageContext.request.contextPath}/resources/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="${pageContext.request.contextPath}/resources/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="${pageContext.request.contextPath}/resources/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="${pageContext.request.contextPath}/resources/css/soft-ui-dashboard.css?v=1.0.4" rel="stylesheet" />
+    <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.4" rel="stylesheet" />
 </head>
 
 <body class="">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
     <div class="container">
-        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="/COMG">
+        <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="/COMG/home">
             COMG
         </a>
         <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,20 +55,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="">
+                    <a class="nav-link me-2" href="/COMG/IdSearch">
                         <i class="fas fa-user-circle opacity-6  me-1"></i>
                         아이디 찾기
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="">
+                    <a class="nav-link me-2" href="/COMG/PwSearch">
                         <i class="fas fa-key opacity-6  me-1"></i>
                         비밀번호 찾기
                     </a>
                 </li>
             </ul>
             <li class="nav-item d-flex align-items-center">
-                <a class="btn btn-sm btn-round mb-0 me-1 bg-gradient-primary"  href="COMGjoin">회원가입</a>
+                <a class="btn btn-sm btn-round mb-0 me-1 bg-gradient-primary"  href="/COMG/join">회원가입</a>
             </li>
             <ul class="navbar-nav d-lg-block d-none">
                 <li class="nav-item">
@@ -81,7 +81,7 @@
 <!-- End Navbar -->
 <main class="main-content  mt-0">
     <section class="min-vh-100 mb-8">
-        <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('${pageContext.request.contextPath}/resources/img/curved-images/curved1.jpg');">
+        <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('/img/curved-images/curved1.jpg');">
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container">
                 <div class="row justify-content-center">
@@ -104,20 +104,21 @@
 
                         </div>
                         <div class="card-body">
-                            <form role="form text-left">
+                            <form role="form text-left" method="post" action="/COMG/loginLogic">
 
                                 <div class="mb-3">
-                                    <input type="email" class="form-control" placeholder="이메일" aria-label="Email" aria-describedby="email-addon">
+                                    <input type="email" name="id" id="id" class="form-control" placeholder="이메일" aria-label="Email" aria-describedby="email-addon">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="비밀번호" aria-label="Password" aria-describedby="password-addon">
+                                    <input type="password" name="pwd" id="pwd" class="form-control" placeholder="비밀번호" aria-label="Password" aria-describedby="password-addon">
                                 </div>
 
                                 <div class="text-center">
-                                    <button type="button" class="btn bg-gradient-success w-100 my-4 mb-2">로그인</button>
+                                    <button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">로그인</button>
                                 </div>
-                                <p class="text-sm mt-3 mb-0">COMG가 처음이신가요? <a href="javascript:;" class="text-dark font-weight-bolder">회원가입</a></p>
                             </form>
+                                <p class="text-sm mt-3 mb-0">COMG가 처음이신가요? <a href="/COMG/join" class="text-dark font-weight-bolder">회원가입</a></p>
+
                         </div>
                     </div>
                 </div>
@@ -180,23 +181,15 @@
     <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
 </main>
 <!--   Core JS Files   -->
-<script src="${pageContext.request.contextPath}/resources/js/core/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/core/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/plugins/smooth-scrollbar.min.js"></script>
-<script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-            damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-</script>
+<script src="/boot2/js/core/popper.min.js"></script>
+<script src="/boot2/js/core/bootstrap.min.js"></script>
+<script src="/boot2/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="/boot2/js/plugins/smooth-scrollbar.min.js"></script>
+
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="${pageContext.request.contextPath}/resources/js/soft-ui-dashboard.min.js?v=1.0.4"></script>
+<script src="/boot2/js/soft-ui-dashboard.min.js?v=1.0.4"></script>
 </body>
 
 </html>
