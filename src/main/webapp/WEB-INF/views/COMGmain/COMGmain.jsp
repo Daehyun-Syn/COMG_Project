@@ -158,7 +158,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid">
-        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('${pageContext.request.contextPath}/resources/img/curved-images/curved0.jpg'); background-position-y: 50%;">
+        <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('/img/curved-images/curved0.jpg'); background-position-y: 50%;">
             <span class="mask bg-gradient-primary opacity-6"></span>
         </div>
         <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
@@ -311,35 +311,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-sm">그룹 #1</p>
-                                        <a href="javascript:;">
-                                            <h5>
-                                                강서폴리텍 데이터분석과
-                                            </h5>
-                                        </a>
-                                        <p class="mb-4 text-sm">
-                                            데이터 분석과 학생들을 위한 공간입니다.
-                                        </p>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <button type="button" class="btn btn-outline-primary btn-sm mb-0">입장하기</button>
-                                            <div class="avatar-group mt-2">
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Elena Morison">
-                                                    <img alt="Image placeholder" src="/img/team-1.jpg">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Milly">
-                                                    <img alt="Image placeholder" src="/img/team-2.jpg">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
-                                                    <img alt="Image placeholder" src="/img/team-3.jpg">
-                                                </a>
-                                                <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Peterson">
-                                                    <img alt="Image placeholder" src="/img/team-4.jpg">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
+
                             </div>
                             <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                                 <div class="card card-blog card-plain">
@@ -418,15 +392,18 @@
                             <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                                 <div class="card h-100 card-plain border">
                                     <div class="card-body d-flex flex-column justify-content-center text-center">
-                                        <a href="javascript:;">
+                                        <a href="/COMG/Creategroup">
                                             <i class="fa fa-plus text-secondary mb-3"></i>
                                             <h5 class=" text-secondary"> 새 그룹 만들기 </h5>
                                         </a>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
     </div>
