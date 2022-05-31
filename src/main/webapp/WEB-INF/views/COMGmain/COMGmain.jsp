@@ -11,11 +11,13 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="kopo.poly.dto.CGroupDTO"%>
+<%@ page import="kopo.poly.dto.CFileDTO" %>
 <%
     //컨트롤러에서 전달받은 값
     String user_name = CmmUtil.nvl((String)request.getAttribute("user_name"));
     String student_id = CmmUtil.nvl((String)request.getAttribute("student_id"));
     List<CGroupDTO> rList = (List<CGroupDTO>) request.getAttribute("rList");
+    List<CFileDTO> fList = (List<CFileDTO>) request.getAttribute("fList");
     int i = 0;
 %>
 <!DOCTYPE html>
@@ -282,7 +284,7 @@
                                 <div class="card card-blog card-plain">
                                     <div class="position-relative">
                                         <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="/img/home-decor-2.jpg" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                                            <img src="<%=fList.get(i-1).getServer_file_path()%>" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
