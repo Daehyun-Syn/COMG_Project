@@ -59,7 +59,9 @@
                     <li class=""></li>
                     <li class=""><br></li>
                 </ol>
+                <a href="/COMG/main">
                 <h6 class="text-white font-weight-bolder ms-2">COMG</h6>
+                </a>
             </nav>
             <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
