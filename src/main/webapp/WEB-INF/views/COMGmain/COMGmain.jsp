@@ -59,7 +59,9 @@
                     <li class=""></li>
                     <li class=""><br></li>
                 </ol>
+                <a href="/COMG/main">
                 <h6 class="text-white font-weight-bolder ms-2">COMG</h6>
+                </a>
             </nav>
             <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -298,7 +300,7 @@
                                             <%=p.getGroup_introduce()%>
                                         </p>
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <a href="/COMG/Group">
+                                            <a href="/COMG/Group?GroupSEQ=<%=p.getGroup_seq()%>">
                                             <button type="button" class="btn btn-outline-primary btn-sm mb-0">입장하기</button>
                                             </a>
                                             <div class="avatar-group mt-2">
