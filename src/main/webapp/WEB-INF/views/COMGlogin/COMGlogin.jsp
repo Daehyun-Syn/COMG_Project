@@ -7,6 +7,10 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ page import="kopo.poly.util.CmmUtil" %>
+<%
+    String group_seq = CmmUtil.nvl((String)request.getAttribute("group_seq"));
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +30,7 @@
     <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.4" rel="stylesheet" />
+
 </head>
 
 <body class="">
@@ -105,14 +110,13 @@
                         </div>
                         <div class="card-body">
                             <form role="form text-left" method="post" action="/COMG/loginLogic">
-
+                                <input type="hidden" name="group_seq" id="group_seq" value="<%=group_seq%>">
                                 <div class="mb-3">
                                     <input type="email" name="id" id="id" class="form-control" placeholder="이메일" aria-label="Email" aria-describedby="email-addon">
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" name="pwd" id="pwd" class="form-control" placeholder="비밀번호" aria-label="Password" aria-describedby="password-addon">
                                 </div>
-
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">로그인</button>
                                 </div>
