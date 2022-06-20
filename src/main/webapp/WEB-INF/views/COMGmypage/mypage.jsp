@@ -19,7 +19,6 @@
     String user_id = CmmUtil.nvl((String)request.getAttribute("user_id"));
     String user_profile = CmmUtil.nvl((String)request.getAttribute("user_profile"));
     List<CGroupDTO> rList = (List<CGroupDTO>) request.getAttribute("rList");
-    List<CFileDTO> fList = (List<CFileDTO>) request.getAttribute("fList");
     int i = 0;
 %>
 <!DOCTYPE html>
@@ -376,7 +375,7 @@
                                 <div class="card card-blog card-plain">
                                     <div class="position-relative">
                                         <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="<%=fList.get(i-1).getServer_file_path()%>" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
+                                            <img src="<%=p.getGroup_profile()%>" alt="img-blur-shadow" class="img-fluid shadow border-radius-lg">
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
@@ -390,9 +389,10 @@
                                             <%=p.getGroup_introduce()%>
                                         </p>
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <a href="/COMG/Group">
-                                                <button type="button" class="btn btn-outline-primary btn-sm mb-0">탈퇴하기</button>
-                                            </a>
+                                            <form action="/COMG/DeleteGroupUser" method="post">
+                                                <input type="hidden" name="delete_group_seq" value="<%=p.getGroup_seq()%>">
+                                                <button type="submit" class="btn btn-outline-primary btn-sm mb-0">탈퇴하기</button>
+                                            </form>
                                             <div class="avatar-group mt-2">
                                                 <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Nick Daniel">
                                                     <img alt="Image placeholder" src="/img/team-3.jpg">
