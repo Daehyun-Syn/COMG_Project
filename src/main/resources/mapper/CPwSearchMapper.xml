@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.poly.persistance.mapper.ICPwSearchMapper">
+
+    <!-- 일치하는 정보가 있으면 DTO에 다 담아오는 쿼리 -->
+    <select id="IDsearch" parameterType="CUserDTO" resultType="CUserDTO">
+        SELECT * FROM USER_INFO
+        WHERE USER_ID = #{user_id}
+    </select>
+
+    <!-- 비밀번호를 변경하는 쿼리 -->
+    <update id="PWupdate" parameterType="CUserDTO">
+        UPDATE USER_INFO
+        SET USER_PASSWORD = #{user_password}
+        WHERE USER_ID = #{user_id}
+    </update>
+</mapper>

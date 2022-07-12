@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.poly.persistance.mapper.ICFileMapper">
+
+    <!-- 일치하는 정보가 있으면 DTO에 다 담아오는 쿼리 -->
+    <select id="FileSeqSearch" parameterType="CFileDTO" resultType="CFileDTO">
+        SELECT FILE_SEQ
+        FROM FILE_INFO
+        WHERE FILE_CODE = #{file_code}
+    </select>
+
+    <insert id="InsertFileInfo" parameterType="CFileDTO">
+        INSERT INTO FILE_INFO(
+            FILE_FROM_TABLE,
+            FILE_CODE
+        ) values(
+                    #{file_from_table},
+                    #{file_code}
+                )
+    </insert>
+
+    <insert id="InsertFileMoreInfo" parameterType="CFileDTO">
+        INSERT INTO FILE_MORE_INFO(
+           FK_FILE_SEQ,
+           SERVER_FILE_NAME,
+           SERVER_FILE_PATH,
+           ORIGIN_FILE_NAME,
+           ORIGIN_FILE_EXTENSION
+        ) values(
+                    #{file_seq},
+                    #{server_file_name},
+                    #{server_file_path},
+                    #{origin_file_name},
+                    #{origin_file_extension}
+                )
+    </insert>
+
+</mapper>
