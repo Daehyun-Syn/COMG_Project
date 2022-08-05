@@ -1,6 +1,6 @@
 ## <img width=20px src=https://user-images.githubusercontent.com/42789819/115147514-42221300-a096-11eb-9526-a68b8094f79c.png>  Project
-**5	Teachable Machine을 활용한 학생관리 및 커뮤니티 서비스, COMG(COvid-19 student ManaGement System)**
-> **🏆  2021 한이음 공모전 입선 | 주최 : 과학기술정보통신부**
+**Teachable Machine을 활용한 학생관리 및 커뮤니티 서비스, COMG(COvid-19 student ManaGement System)**
+> **👨‍🏫  개인프로젝트 **
 > [![COMG(COvid-19 student ManaGement System)](https://user-images.githubusercontent.com/80372103/182903943-9c9fb79e-f281-40ec-b735-4c05c305a2d2.png)](https://youtu.be/ZaGxmUL0TSk)
 > **팀원: 신대현, 오주현, 유연준, 이진아, 김학겸**  
 > 
@@ -19,7 +19,13 @@
 *  Server
   
 [3.디렉터리 정보](#디렉터리-정보)
-* 2021_HaniumPrj_Demo
+* COMG_Project/src/main/java/kopo/poly/config/S3Configuration.java
+* COMG_Project/src/main/java/kopo/poly/util/DownloadView.java
+* COMG_Project/src/main/java/kopo/poly/controller/CImgUploadController.java
+* COMG_Project/src/main/java/kopo/poly/controller/CKeditorController.java
+* COMG_Project/src/main/webapp/WEB-INF/views/COMGBoard/BoardUpdate.jsp
+* COMG_Project/src/main/webapp/WEB-INF/views/COMGBoard/BoardWrite.jsp
+* COMG_Project/src/main/webapp/WEB-INF/views/COVID/KitSend.jsp
 * OCR<br>
   
 
