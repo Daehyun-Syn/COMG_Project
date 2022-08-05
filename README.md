@@ -68,6 +68,8 @@
 ### | Server
 * <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=for-the-badge&logo=Apache Tomcat&logoColor=white">
 * <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white">
+### | Storage
+* <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">
 ## 디렉터리 정보
 ### | 2021_Hanium_Project
 * Spring Framework Project 디렉터리
