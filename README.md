@@ -29,7 +29,7 @@
 * COMG_Project/src/main/webapp/WEB-INF/views/COMGBoard/BoardUpdate.jsp
 * COMG_Project/src/main/webapp/WEB-INF/views/COMGBoard/BoardWrite.jsp
 * COMG_Project/src/main/webapp/WEB-INF/views/COVID/KitSend.jsp
-* OCR<br>
+* COMG_Project/src/main/resources/static/teachable/teachable.js<br>
   
 
 ## 프로젝트 소개
