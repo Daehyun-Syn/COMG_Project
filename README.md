@@ -11,8 +11,8 @@
 ## 목차
 [1.프로젝트 소개](#프로젝트-소개)
 * 제안 배경
+* 프로젝트 개요
 * 기대 효과
-* 단점 및 해결 방안
   
 [2.사용 기술](#사용-)
 *  Language
@@ -20,6 +20,7 @@
 *  Framework
 *  Tool
 *  Server
+*  Storage
   
 [3.디렉터리 정보](#디렉터리-정보)
 * COMG_Project/src/main/java/kopo/poly/config/S3Configuration.java
@@ -34,20 +35,18 @@
 
 ## 프로젝트 소개
 ### | 제안 배경
-* 한국을 여행하는 외국인 관광객이 매년 증가하고 있다.
-* 한국 여행업협회(KATA)가 조사한 결과에 따르면, 외국인 관광객의 21%는 맛집 탐방을 목적으로 한국을 방문.
-* 문화체육관광부에서 조사한 자료에 따르면, 외국인 관광객의 여행 시 불편사항으로는 언어 소통이 1순위(45.2%)로 조사됨.
-* 한국의 알레르기유발식품 표시제는 알레르기 유발 식품을 포괄적으로 표시하는 EU, 미국 등 다른 나라에 비해 미흡함.
-* 소비자원에 접수된 식품 알레르기 사례 중 표시 의무 품목이 아닌 원료 식품에 의한 알레르기 사고는 236건(54%)으로 절반 이상을 차지.
+* 코로나19 확진자가 점차 증가하고 있음에 따라 각 학교에서는 학생 관리에 어려움을 겪고 있다.
+* 각 학교마다 코로나19 확진자 관련 공지내용이 다르다.
+* 따라서 각 학교별 코로나19 확진자에게 학교별로 정확한 공지 내용 전달과 과제를 출제하고 관리하는 올인원 시스템이 필요하다고 생각해 이 프로젝트를 기획하게 되었다.  
+### | 프로젝트 개요
+* 사용자는 해당하는 학교 그룹에 가입 후 사용자가 사용한 코로나 키트를 제출하면 키트 검사 결과에 따라 각 그룹별로 설정된 코로나 관련 공지사항을 카카오톡으로 받아볼 수 있다.
+* 카카오톡으로 간단하게 사용자들을 그룹에 초대할 수 있으며, 과제를 생성 제출함에 CKEditor를 사용해 다양한 양식을 편하게 사용할 수 있다. 
 ### | 기대 효과
 * Teachable machine을 활용하여 코로나 검사 키트를 분석하고 분석결과에 따라 설정된 카카오톡 메시지를 보내줌으로써 그룹별 코로나 환자 관리가 용이함
 * 과제 생성 / 제출기능을 통해 손쉽게 과제를 생성하고 제출할 수 있음
 * 과제 관리 기능을 통해 과목별로 제출된 과제를 확인하고 피드백을 작성하여 손쉽게 과제를 관리할 수 있음
 * 그룹별 게시판 및 댓글기능을 통해 커뮤니케이션을 활성화할 수 있음
 * 제출된 과제를 관리자가 확인 시 제출자에게 카카오톡 메시지가 전송되어 제출 현황 파악에 용이함
-### | 단점 및 해결 방안
-* 같은 음식이더라도 식당마다 레시피가 달라 정확한 알레르기 성분을 확인할 수 없다. 
-<br>=> Allergy For You 서비스를 상용화 하여 식당마다 등록된 알레르기 성분 외 알레르기 성분을 추가 등록하여 해당 식당 전용 데이터를 구축하여 정확한 알레르기 정보를 확인할 수 있도록 한다.
 ## 사용 기술
 ### | Language 
 * <img src="https://img.shields.io/badge/Java-색코드?style=for-the-badge&logo=이미지 이름&logoColor=white">
@@ -71,7 +70,19 @@
 ### | Storage
 * <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">
 ## 디렉터리 정보
-### | 2021_Hanium_Project
-* Spring Framework Project 디렉터리
-### | OCR
-* 이미지 분석및 판독을 위한 TensorFlow 및 Spring Framework와 통신을 위한 Flask의 Python 디렉터리
+### | COMG_Project/src/main/java/kopo/poly/config/S3Configuration.java
+* S3 버킷을 사용하기 위해 버킷 시크릿키, 패스워드, 버킷 이름 등을 설정하는 java파일
+### | COMG_Project/src/main/java/kopo/poly/util/DownloadView.java
+* 파일을 다운로드 하기 위한 Java 유틸
+### | COMG_Project/src/main/java/kopo/poly/controller/CImgUploadController.java
+* 사진 및 파일을 업로드하기 위한 Java Controller
+### | COMG_Project/src/main/java/kopo/poly/controller/CKeditorController.java
+* CKEditor로 파일을 업로드하여 CKEditor서버로 보내주기 위한 Java Controller
+### | COMG_Project/src/main/webapp/WEB-INF/views/COMGBoard/BoardWrite.jsp
+* CKEditor가 적용된 글 작성 Jsp
+### | COMG_Project/src/main/webapp/WEB-INF/views/COMGBoard/BoardUpdate.jsp
+* CKEditor가 적용된 글 수정 Jsp
+### | COMG_Project/src/main/webapp/WEB-INF/views/COVID/KitSend.jsp
+* JavaScript로 Teachable Machine에 학습된 모델을 호출하기 위한 Jsp
+### | COMG_Project/src/main/resources/static/teachable/teachable.js
+* Teachable Machine을 사용하기 위한 Teachable Machine설정 Js
