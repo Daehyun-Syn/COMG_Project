@@ -71,7 +71,7 @@
 * <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">
 ## 디렉터리 정보
 ### | COMG_Project/src/main/java/kopo/poly/config/S3Configuration.java
-* S3 버킷을 사용하기 위해 버킷 시크릿키, 패스워드, 버킷 이름 등을 설정하는 java파일
+* S3 버킷을 사용하기 위해 버킷 시크릿키, 패스워드, 버킷 이름 등을 설정하는 Java파일
 ### | COMG_Project/src/main/java/kopo/poly/util/DownloadView.java
 * 파일을 다운로드 하기 위한 Java 유틸
 ### | COMG_Project/src/main/java/kopo/poly/controller/CImgUploadController.java
