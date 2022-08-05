@@ -21,6 +21,7 @@
 *  Tool
 *  Server
 *  Storage
+*  Text Editor
   
 [3.디렉터리 정보](#디렉터리-정보)
 * COMG_Project/src/main/java/kopo/poly/config/S3Configuration.java
