@@ -51,23 +51,23 @@
 ## 사용 기술
 ### | Language 
 * <img src="https://img.shields.io/badge/Java-색코드?style=for-the-badge&logo=이미지 이름&logoColor=white">
-* Python 
+* <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"> 
 * <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
-* Css3
+* <img src="https://img.shields.io/badge/Css3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"> 
 * <img src="https://img.shields.io/badge/Html5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
 ### | Data Base
 * <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=MariaDB&logoColor=white">
 ### | Framework
-* Spring Framework 
+* <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> 
 ### | Tool
-* Eclipse
-* Pycharm
-* Git Hub
-* Git Bash
-* MySQL Workbench
+* <img src="https://img.shields.io/badge/IntelliJ-000000?style=for-the-badge&logo=IntelliJ IDEA&logoColor=white"> 
+* <img src="https://img.shields.io/badge/PyCharm-000000?style=for-the-badge&logo=PyCharm&logoColor=white"> 
+* <img src="https://img.shields.io/badge/Git Hub-181717?style=for-the-badge&logo=GitHub&logoColor=white"> 
+* <img src="https://img.shields.io/badge/Git Kraken-179287?style=for-the-badge&logo=GitKraken&logoColor=white">
+* <img src="https://img.shields.io/badge/Data Grip-000000?style=for-the-badge&logo=DataGrip&logoColor=white">
 ### | Server
-* Tomcat 
-* AWS
+* <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=for-the-badge&logo=Apache Tomcat&logoColor=white">
+* <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white">
 ## 디렉터리 정보
 ### | 2021_Hanium_Project
 * Spring Framework Project 디렉터리
