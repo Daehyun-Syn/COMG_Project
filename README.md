@@ -50,13 +50,13 @@
 <br>=> Allergy For You 서비스를 상용화 하여 식당마다 등록된 알레르기 성분 외 알레르기 성분을 추가 등록하여 해당 식당 전용 데이터를 구축하여 정확한 알레르기 정보를 확인할 수 있도록 한다.
 ## 사용 기술
 ### | Language 
-* Java 
+* <img src="https://img.shields.io/badge/Java-색코드?style=for-the-badge&logo=이미지 이름&logoColor=white">
 * Python 
-* Html5
+* <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
 * Css3
-* JavaScript
+* <img src="https://img.shields.io/badge/Html5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
 ### | Data Base
-* MySQL 
+* <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=MariaDB&logoColor=white">
 ### | Framework
 * Spring Framework 
 ### | Tool
