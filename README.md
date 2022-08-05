@@ -1,5 +1,5 @@
 ## <img width=20px src=https://user-images.githubusercontent.com/42789819/115147514-42221300-a096-11eb-9526-a68b8094f79c.png>  Project
-**Teachable Machine을 활용한 학생관리 및 커뮤니티 서비스, COMG(COvid-19 student ManaGement System)**
+**Teachable Machine을 활용한 학생관리 및 커뮤니티 서비스, COMG(COvid-19 student ManaGement system)**
 
 > **👨‍🏫  개인프로젝트(아래 이미지를 클릭하면 유튜브 📼영상으로 이동됩니다)**
 > 
