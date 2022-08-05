@@ -57,7 +57,8 @@
 ### | Data Base
 * <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=MariaDB&logoColor=white">
 ### | Framework
-* <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white"> 
+* <img src="https://img.shields.io/badge/Spring Boot-6DB33F?style=for-the-badge&logo=Spring Boot&logoColor=white">
+* <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"><br> 
 ### | Tool
 * <img src="https://img.shields.io/badge/IntelliJ-000000?style=for-the-badge&logo=IntelliJ IDEA&logoColor=white"> 
 * <img src="https://img.shields.io/badge/PyCharm-000000?style=for-the-badge&logo=PyCharm&logoColor=white"> 
@@ -69,6 +70,8 @@
 * <img src="https://img.shields.io/badge/Amazon EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white">
 ### | Storage
 * <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">
+### | Text Editor
+* <img src="https://img.shields.io/badge/CKEditor 4-0287D0?style=for-the-badge&logo=CKEditor 4&logoColor=white">
 ## 디렉터리 정보
 ### | COMG_Project/src/main/java/kopo/poly/config/S3Configuration.java
 * S3 버킷을 사용하기 위해 버킷 시크릿키, 패스워드, 버킷 이름 등을 설정하는 Java파일
