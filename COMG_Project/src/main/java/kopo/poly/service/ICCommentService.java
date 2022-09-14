@@ -1,8 +1,7 @@
 package kopo.poly.service;
 
-import kopo.poly.dto.CBoardDTO;
 import kopo.poly.dto.CCommentDTO;
-import kopo.poly.dto.CUserDTO;
+
 
 import java.util.List;
 

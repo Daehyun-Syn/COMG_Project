@@ -281,10 +281,10 @@ public class CmypageController {
 
             if(res == 1) {
 
-                log.info("CmypageController : 회원 탈퇴 로직 성공");
+                log.info("CmypageController : 회원 정보 수정 로직 성공");
             }else {
 
-                log.info("CmypageController : 회원 탈퇴 로직 실패");
+                log.info("CmypageController : 회원 정보 수정 실패");
             }
 
         }catch (Exception e){

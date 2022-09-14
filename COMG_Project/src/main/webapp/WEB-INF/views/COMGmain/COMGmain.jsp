@@ -40,12 +40,47 @@
     <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.4" rel="stylesheet" />
+    <script src="/js/jquery-3.6.0.min.js"></script>
     <style>
         .row {
             white-space: nowrap;
             overflow-x: auto;
         }
+
+
+
+        /*Resize the wrap to see the search bar change!*/
     </style>
+    <script>
+        function AutoComplete() {
+            let form = document.getElementById('searchGroupName').value;
+            console.log("function안에 들어옴");
+            console.log(form);
+
+            $.ajax({
+                url: '/COMG/AutoComplete',
+                type: "GET",
+                data: {"form" : form} ,
+                success: function(data){
+                    if(data == null){
+                        console.log("그룹 검색 실패: sql 로직 에러");
+                        return false;
+                    }else{
+                        console.log("그룹 검색 성공");
+
+                    }
+                },
+                error: function (){
+                    console.log("아작스 에러 : 스크립트 오류");
+                    return false;
+                }
+            });
+        }
+
+    </script>
+
+
+
 </head>
 
 <body>
@@ -228,8 +263,20 @@
             <div class="col-12 mt-4" >
                 <div class="card mb-4">
                     <div class="card-header pb-0 p-3">
+
                         <h6 class="mb-1">내 목록</h6>
-                        <p class="text-sm">현재 가입된 목록들 입니다.</p>
+
+
+                            <div class="search" style="float:right;">
+                                <form action="/COMG/SearchGroupName"  method="get" id="searchForm" name="searchForm">
+                                <input type="text" class="searchTerm" id="searchGroupName" name="searchGroupName" placeholder="그룹 이름을 입력하여 검색하세요" onkeyup="AutoComplete()">
+                                <button type="submit" class="searchButton">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                </form>
+                            </div>
+                        <h4 class="text-sm">현재 가입된 목록들 입니다.</h4>
+
                     </div>
 
                     <div class="card-body p-3">
@@ -429,6 +476,8 @@
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+
+
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

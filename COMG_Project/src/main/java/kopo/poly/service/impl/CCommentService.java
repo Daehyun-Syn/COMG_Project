@@ -99,8 +99,7 @@ public class CCommentService implements ICCommentService {
         log.info("CCommentService : UpdateCommentInfo 끝!");
         return res;
     }
-    //1
-        
+
     @Override
     public int DeleteComment(CCommentDTO cDTO) throws Exception {
         log.info("CBoardService : DeleteComment 시작!");

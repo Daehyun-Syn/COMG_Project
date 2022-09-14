@@ -16,8 +16,8 @@ import java.util.Properties;
 public class CMailService implements ICMailService {
 
     final String host = "smtp.gmail.com";
-    final String user = "아이디@gmail.com";
-    final String password = "gmail 인증 비밀번호";
+    final String user = "shindaepal@gmail.com";
+    final String password = "cxoyrwyfkuwuvhzy";
     final int port = 465;
 
     @Override
