@@ -87,7 +87,7 @@
 	<script>
 
 
-		const APIKY = "ffa7982a461efab9cb20456fbf1f8109"
+		const APIKY = ""
 
 		navigator.geolocation.getCurrentPosition(function (position) {
 
