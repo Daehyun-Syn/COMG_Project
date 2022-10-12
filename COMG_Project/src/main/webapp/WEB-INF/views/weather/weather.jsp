@@ -87,7 +87,7 @@
 	<script>
 
 
-		const APIKY = ""
+		const APIKY = "#"
 
 		navigator.geolocation.getCurrentPosition(function (position) {
 
@@ -96,7 +96,7 @@
 			console.log(lat);
 			console.log(lon);
 
-			const url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + APIKY + '&units=metric';
+			const url = '#' + lat + '&lon=' + lon + '&appid=' + APIKY + '&units=metric';
 			console.log(url);
 			//javascript가 url을 자동으로 연결 시켜줌 직접 url을 눌러서 갈 필요가없음
 			fetch(url).then(reponse => reponse.json()).then(data => {
