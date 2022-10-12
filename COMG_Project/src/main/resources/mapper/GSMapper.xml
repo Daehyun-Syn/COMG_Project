@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.search.persistance.mapper.IGSMapper">
+
+
+    <select id="getGroupListForAjax" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT g.GROUP_NAME, g.GROUP_INTRODUCE, g.GROUP_SEQ, fm.SERVER_FILE_PATH as group_profile FROM GROUP_INFO g, FILE_MORE_INFO fm
+        WHERE
+            (
+                CASE
+                    WHEN #{group_name} = 'ㄱ' THEN ( GROUP_NAME >= '가' AND '나' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㄴ' THEN ( GROUP_NAME >= '나' AND '다' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㄷ' THEN ( GROUP_NAME >= '다' AND '라' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㄹ' THEN ( GROUP_NAME >= '라' AND '마' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅁ' THEN ( GROUP_NAME >= '마' AND '바' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅂ' THEN ( GROUP_NAME >= '바' AND '사' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅅ' THEN ( GROUP_NAME >= '사' AND '아' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅇ' THEN ( GROUP_NAME >= '아' AND '자' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅈ' THEN ( GROUP_NAME >= '자' AND '차' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅊ' THEN ( GROUP_NAME >= '차' AND '카' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅋ' THEN ( GROUP_NAME >= '카' AND '타' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅌ' THEN ( GROUP_NAME >= '타' AND '파' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅍ' THEN ( GROUP_NAME >= '파' AND '하' > GROUP_NAME )
+                    WHEN #{group_name} = 'ㅎ' THEN ( GROUP_NAME >= '하')
+                    ELSE GROUP_NAME LIKE concat(#{group_name}, '%')
+                    END
+                ) and g.FILE_SEQ = fm.FK_FILE_SEQ
+        LIMIT 3;
+    </select>
+
+
+    <select id="getAutoGroupName" parameterType="CGroupDTO" resultType="CGroupDTO">
+        SELECT GROUP_NAME FROM GROUP_INFO
+        WHERE
+            (
+        CASE
+             WHEN #{group_name} = 'ㄱ' THEN ( GROUP_NAME >= '가' AND '나' > GROUP_NAME )
+             WHEN #{group_name} = 'ㄴ' THEN ( GROUP_NAME >= '나' AND '다' > GROUP_NAME )
+             WHEN #{group_name} = 'ㄷ' THEN ( GROUP_NAME >= '다' AND '라' > GROUP_NAME )
+             WHEN #{group_name} = 'ㄹ' THEN ( GROUP_NAME >= '라' AND '마' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅁ' THEN ( GROUP_NAME >= '마' AND '바' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅂ' THEN ( GROUP_NAME >= '바' AND '사' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅅ' THEN ( GROUP_NAME >= '사' AND '아' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅇ' THEN ( GROUP_NAME >= '아' AND '자' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅈ' THEN ( GROUP_NAME >= '자' AND '차' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅊ' THEN ( GROUP_NAME >= '차' AND '카' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅋ' THEN ( GROUP_NAME >= '카' AND '타' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅌ' THEN ( GROUP_NAME >= '타' AND '파' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅍ' THEN ( GROUP_NAME >= '파' AND '하' > GROUP_NAME )
+             WHEN #{group_name} = 'ㅎ' THEN ( GROUP_NAME >= '하')
+             ELSE GROUP_NAME LIKE concat(#{group_name}, '%')
+        END
+                )
+        LIMIT 3;
+        </select>
+
+    </mapper>

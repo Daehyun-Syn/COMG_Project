@@ -212,4 +212,9 @@ public class CBoardController {
         log.info("CBoardController : BoardDeleteLogic 끝! ");
         return "/alert/sweetalert";
     }
+
+    @GetMapping(value = "weather")
+    public String weather(HttpServletRequest request, ModelMap model, HttpSession session) throws Exception {
+        return "/weather/weather";
+    }
 }

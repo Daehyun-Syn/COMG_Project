@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.poly.persistance.mapper.CustomerInserMapper">
+
+
+    <select id="selectChatRoom" parameterType="CUserDTO" resultType="CUserDTO">
+        SELECT CUST_ROOM as custRoomCheck FROM USER_INFO
+        WHERE USER_ID = #{user_id}
+    </select>
+
+
+    <update id="insertChatRoom" parameterType="CUserDTO">
+        UPDATE USER_INFO
+        SET CUST_ROOM = #{CUST_ROOM}
+        WHERE USER_ID = #{user_id}
+    </update>
+
+    <select id="selectAdminRoom" resultType="CustomerDTO">
+        select u.USER_SEQ as userSeq,u.USER_ID as userId, u.CUST_ROOM as custRoom, u.USER_NAME as userName, fm.SERVER_FILE_PATH as serverFilePath from USER_INFO u, FILE_MORE_INFO fm
+        where CUST_ROOM != '0' and u.FILE_SEQ = fm.FK_FILE_SEQ;
+    </select>
+    </mapper>

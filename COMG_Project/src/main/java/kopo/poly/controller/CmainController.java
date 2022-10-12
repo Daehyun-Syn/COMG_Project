@@ -148,6 +148,7 @@ public class CmainController {
             //그룹 리스트 목록 전달하기
             model.addAttribute("rList", rList);
             model.addAttribute("user_profile", user_profile);
+            session.setAttribute("user_profile", user_profile);
         }
         log.info("CgroupController : 그룹 목록 출력 끝 !");
         return "/COMGmain/COMGmain";

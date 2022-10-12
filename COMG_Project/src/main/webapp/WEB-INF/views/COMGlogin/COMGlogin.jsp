@@ -119,6 +119,7 @@
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn bg-gradient-success w-100 my-4 mb-2">로그인</button>
+                                    <button type="button" class="btn w-100 my-4 mb-2" onclick="location.href='https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=3f3dc7847eecf953477701d6680035e2&redirect_uri=http://localhost:11000/kakaologinPage';"><img src="/img/kakao_login_medium_wide.png"></button>
                                 </div>
                             </form>
                                 <p class="text-sm mt-3 mb-0">COMG가 처음이신가요? <a href="/COMG/join" class="text-dark font-weight-bolder">회원가입</a></p>

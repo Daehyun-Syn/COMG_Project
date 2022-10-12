@@ -9,11 +9,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.Objects;
 
 @Slf4j
@@ -117,7 +119,7 @@ public class CloginController {
             e.printStackTrace();
         } finally {
             uDTO = null;
-            //회원가입 여부 결과 메시지 전달하기
+            //로그인 여부 결과 메시지 전달하기
             model.addAttribute("alert_title", alert_title);
             model.addAttribute("alert_contents", alert_contents);
             model.addAttribute("alert_state", alert_state);

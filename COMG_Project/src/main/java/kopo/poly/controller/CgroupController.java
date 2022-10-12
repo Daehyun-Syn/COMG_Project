@@ -2,6 +2,7 @@ package kopo.poly.controller;
 
 import kopo.poly.dto.*;
 import kopo.poly.service.*;
+import kopo.poly.service.impl.FullCalenderService;
 import kopo.poly.util.CmmUtil;
 import kopo.poly.util.RandomStringUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,11 @@ public class CgroupController {
 
     @Resource(name = "CAssignmentService")
     private ICAssignmentService cAssignmentService;
+
+    FullCalenderService fullCalenderService;
+    public CgroupController(FullCalenderService fullCalenderService) {
+        this.fullCalenderService = fullCalenderService;
+    }
 
     @GetMapping(value = "COMG/Group")
     public String ComgIndex(HttpSession session, ModelMap model, HttpServletRequest request) throws Exception{
@@ -433,6 +439,27 @@ public class CgroupController {
                     model.addAttribute("sList",sList);
                 }
 
+                int groupSeq = Integer.parseInt(CmmUtil.nvl(request.getParameter("GroupSEQ")));
+                ScheduleReqDTO reqDTO = null;
+                reqDTO = new ScheduleReqDTO();
+                reqDTO.setGroupSeq(groupSeq);
+
+                List<ScheduleDTO> eList = null;
+                eList = new ArrayList<>();
+
+                eList = fullCalenderService.getScheduleList(reqDTO);
+                if(eList == null) {
+                    eList = new ArrayList<>();
+                }else {
+                    for(int i = 0; i<eList.size(); i++){
+                        log.info(eList.get(i).getAssignmentRoomName());
+                        log.info(eList.get(i).getAssignmentRegDate());
+                        log.info(eList.get(i).getAssignmentDeadLine());
+                    }
+
+                    model.addAttribute("eList",eList);
+
+                }
             }
 
 

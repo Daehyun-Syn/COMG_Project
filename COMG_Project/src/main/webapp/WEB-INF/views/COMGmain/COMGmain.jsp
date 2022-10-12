@@ -12,6 +12,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="kopo.poly.dto.CGroupDTO"%>
 <%@ page import="kopo.poly.dto.CFileDTO" %>
+<%@ page import="java.util.Objects" %>
 <%
     //컨트롤러에서 전달받은 값
     String user_name = CmmUtil.nvl((String)request.getAttribute("user_name"));
@@ -19,6 +20,9 @@
     List<CGroupDTO> rList = (List<CGroupDTO>) request.getAttribute("rList");
     int i = 0;
     String user_profile = CmmUtil.nvl((String)request.getAttribute("user_profile"));
+    CUserDTO uDTO = null;
+    uDTO = new CUserDTO();
+    uDTO = (CUserDTO) session.getAttribute("suDTO");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,31 +56,26 @@
         /*Resize the wrap to see the search bar change!*/
     </style>
     <script>
-        function AutoComplete() {
-            let form = document.getElementById('searchGroupName').value;
-            console.log("function안에 들어옴");
-            console.log(form);
-
+        function logout() {
             $.ajax({
-                url: '/COMG/AutoComplete',
+                url: '/COMG/logout',
                 type: "GET",
-                data: {"form" : form} ,
-                success: function(data){
-                    if(data == null){
-                        console.log("그룹 검색 실패: sql 로직 에러");
-                        return false;
-                    }else{
-                        console.log("그룹 검색 성공");
 
+                success: function(data){
+                    if(data == 1){
+                        console.log("로그아웃 성공");
+
+                    }else{
+                        console.log("로그아웃 실패");
                     }
                 },
                 error: function (){
-                    console.log("아작스 에러 : 스크립트 오류");
+                    console.log("아작스 에러 : 로그아웃 실패");
+                    swal('내부 에러!', "다시한번 시도해주세요.", 'warning');
                     return false;
                 }
             });
         }
-
     </script>
 
 
@@ -101,9 +100,9 @@
             <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
-                        <a href="/COMG/logout" class="nav-link text-white font-weight-bold px-0">
+                        <a href="https://kauth.kakao.com/oauth/logout?client_id=3f3dc7847eecf953477701d6680035e2&logout_redirect_uri=http://localhost:11000/" class="nav-link text-white font-weight-bold px-0">
                             <i class="fas fa-key opacity-6 text-white me-1"></i>
-                            <span class="d-sm-inline d-none">로그아웃</span>
+                            <span class="d-sm-inline d-none" onclick="logout()">로그아웃</span>
                         </a>
                     </div>
                 </div>
@@ -210,6 +209,7 @@
     <div class="container-fluid">
         <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('/img/curved-images/curved0.jpg'); background-position-y: 50%;">
             <span class="mask bg-gradient-primary opacity-6"></span>
+            <%@include file="../weather/weather.jsp"%>
         </div>
         <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
             <div class="row gx-4">
@@ -252,6 +252,44 @@
                                     </svg>
                                     <span class="ms-1">마이페이지</span>
                                 </a>
+                            </li>
+                            <%if(Objects.equals(uDTO.getUser_id(), "Admin@comg.com")){%>
+                            <li class="nav-item">
+                                <a class="nav-link mb-0 px-0 py-1" href="/COMG/adminCustomerList" role="tab" aria-selected="false">
+                                    <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <title>person</title>
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                                <g transform="translate(1716.000000, 291.000000)">
+                                                    <g transform="translate(304.000000, 151.000000)">
+
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span class="ms-1">고객센터</span>
+                                </a>
+                            </li>
+                            <%}else{%>
+                            <li class="nav-item">
+                                <a class="nav-link mb-0 px-0 py-1" href="/chatingroom" role="tab" aria-selected="false">
+                                    <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <title>person</title>
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                                                <g transform="translate(1716.000000, 291.000000)">
+                                                    <g transform="translate(304.000000, 151.000000)">
+
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span class="ms-1">고객센터</span>
+                                </a>
+                            </li>
+                            <%}%>
                         </ul>
                     </div>
                 </div>
@@ -269,7 +307,10 @@
 
                             <div class="search" style="float:right;">
                                 <form action="/COMG/SearchGroupName"  method="get" id="searchForm" name="searchForm">
-                                <input type="text" class="searchTerm" id="searchGroupName" name="searchGroupName" placeholder="그룹 이름을 입력하여 검색하세요" onkeyup="AutoComplete()">
+                                <input type="text" class="searchTerm" id="searchGroupName" name="searchGroupName" placeholder="그룹 이름을 입력하여 검색하세요">
+                                <input type="hidden" id="user_name" name="user_name" value="<%=user_name%>">
+                                <input type="hidden" id="student_id" name="student_id" value="<%=student_id%>">
+                                <input type="hidden" id="user_profile" name="user_profile" value="<%=user_profile%>">
                                 <button type="submit" class="searchButton">
                                     <i class="fa fa-search"></i>
                                 </button>

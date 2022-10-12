@@ -14,4 +14,7 @@ public class CUserDTO {
     private String exists_yn;
     private String file_seq;
     private String password_check;
+    private String kakaoId;
+    private String CUST_ROOM;
+    private String custRoomCheck;
 }

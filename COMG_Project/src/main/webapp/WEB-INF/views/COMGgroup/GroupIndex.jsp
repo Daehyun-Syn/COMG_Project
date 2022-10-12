@@ -9,12 +9,9 @@
          pageEncoding="UTF-8" %>
 
 <%@ page import="kopo.poly.util.CmmUtil" %>
-<%@ page import="kopo.poly.dto.CGroupDTO" %>
-<%@ page import="kopo.poly.dto.CBoardDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Objects" %>
-<%@ page import="kopo.poly.dto.CFileDTO" %>
-<%@ page import="kopo.poly.dto.CAssignmentDTO" %>
+<%@ page import="kopo.poly.dto.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <%
@@ -32,7 +29,7 @@
     CGroupDTO nDTO = (CGroupDTO)request.getAttribute("nDTO");
     List<CFileDTO> fileList = (List<CFileDTO>) request.getAttribute("fileList");
     List<CAssignmentDTO> sList = (List<CAssignmentDTO>) request.getAttribute("sList");
-
+    List<ScheduleDTO> eList = (List<ScheduleDTO>) request.getAttribute("eList");
 %>
 <head>
     <meta charset="utf-8" />
@@ -50,12 +47,14 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <script src="/vendor/libs/jquery/jquery.js"></script>
+    <script src='/js/fullcal/main.js'></script>
+    <script src='/js/fullcal/locales-all.js'></script>
+    <link href='/js/fullcal/main.css' rel='stylesheet' />
     <link href="/css/nucleo-svg.css" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.4" rel="stylesheet" />
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
     <style>
-
         #marginF{
             margin-top: 4%;
         }
@@ -69,6 +68,99 @@
             padding: 0.5% 0.5% 0.5% 1.5%;
         }
 
+        #dispaly {
+
+        }
+        #modal.modal-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        #modal .modal-window {
+            background: rgba( 69, 139, 197, 0.70 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 13.5px );
+            -webkit-backdrop-filter: blur( 13.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            width: 800px;
+            height: 900px;
+            position: relative;
+            top: -100px;
+            padding: 10px;
+        }
+        #modal .title {
+            padding-left: 10px;
+            display: inline;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+
+        }
+        #modal .title h2 {
+            display: inline;
+        }
+        #modal .close-area {
+            display: inline;
+            float: right;
+            padding-right: 10px;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
+
+        #modal .content {
+            margin-top: 20px;
+            padding: 0px 10px;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
+        .calendar * {
+            border: solid 1px black;
+        }
+
+        #kakaoLogin {
+            border: 0;
+            outline: 0;
+        }
+
+        /* 월화수목금 */
+        .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion {
+            color: black;
+        }
+
+        .fc-daygrid-day-frame .fc-daygrid-day-top .fc-daygrid-day-number {
+            color: black;
+        }
+
+        /* 토요일 */
+        .fc-day-sat .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion {
+            color: blue;
+        }
+
+        .fc-day-sat .fc-daygrid-day-frame .fc-daygrid-day-top .fc-daygrid-day-number {
+            color: blue;
+        }
+
+        /* 일요일 */
+        .fc-day-sun .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion {
+            color: red;
+        }
+
+        .fc-day-sun .fc-daygrid-day-frame .fc-daygrid-day-top .fc-daygrid-day-number {
+            color: red;
+        }
     </style>
     <script>
         $(document).on('click', '.send_button', function(){
@@ -109,7 +201,61 @@
             });
         });
 
+        function logout() {
+            $.ajax({
+                url: '/COMG/logout',
+                type: "GET",
 
+                success: function(data){
+                    if(data == 1){
+                        console.log("로그아웃 성공");
+
+                    }else{
+                        console.log("로그아웃 실패");
+                    }
+                },
+                error: function (){
+                    console.log("아작스 에러 : 로그아웃 실패");
+                    swal('내부 에러!', "다시한번 시도해주세요.", 'warning');
+                    return false;
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            let calendarEl = document.getElementById('calendar');
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'ko',
+                headerToolbar: {
+                    left: 'title',
+                    center: '',
+                    right: 'prev,next,today'
+                },
+                height: 'auto',
+                selectable: true,
+                weekends: true,
+                events: [
+                    <%
+                           for(ScheduleDTO eDTO : eList) {
+                               String id = String.valueOf(eDTO.getAssignmentRoomSeq());
+                               String title = eDTO.getAssignmentRoomName();
+                               String start = eDTO.getAssignmentRegDate();
+                               String end = eDTO.getAssignmentDeadLine();
+                               %>
+                    {
+                        id : '<%=id%>',
+                        title  : '<%=title%>',
+                        start  : '<%=start%>',
+                        end    : '<%=end%>'
+                    },
+
+                    <%
+                           }
+                       %>
+                ],
+            });
+            calendar.render();
+        });
     </script>
 
 
@@ -118,9 +264,10 @@
 <body>
 
 <main class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg bg-transparent shadow-none position-absolute px-4 w-100 z-index-2">
-        <div class="container-fluid py-1">
+        <div class="container-fluid py-1" id="navbar2" style="z-index: 2;">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 ps-2 me-sm-6 me-5">
                     <li class=""></li>
@@ -131,16 +278,16 @@
                 </a>
             </nav>
             <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
+
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
-                        <a href="/COMG/logout" class="nav-link text-white font-weight-bold px-0">
+                        <a href="https://kauth.kakao.com/oauth/logout?client_id=3f3dc7847eecf953477701d6680035e2&logout_redirect_uri=http://localhost:11000/" class="nav-link text-white font-weight-bold px-0">
                             <i class="fas fa-key opacity-6 text-white me-1"></i>
-                            <span class="d-sm-inline d-none">로그아웃</span>
+                            <span class="d-sm-inline d-none" onclick="logout()">로그아웃</span>
                         </a>
                     </div>
                 </div>
                 <ul class="navbar-nav justify-content-end">
-
                     <li class="nav-item d-flex align-items-center">
                         <a href="/COMG/Mypage" class="nav-link text-white font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
@@ -242,6 +389,7 @@
     <div class="container-fluid">
         <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('/img/curved-images/curved0.jpg'); background-position-y: 50%;">
             <span class="mask bg-gradient-primary opacity-6"></span>
+            <%@include file="../weather/weather.jsp"%>
         </div>
         <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
             <div class="row gx-4">
@@ -386,7 +534,20 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid py-4 display display2" >
+    <!-- fullcalender -->
+    <div class="container-fluid py-4 display display2">
+        <div id="modal" class="modal-overlay" style="z-index: 1;">
+            <div class="modal-window">
+                <div class="title">
+                    <h2>FullCalender</h2>
+                </div>
+                <div class="close-area">X</div>
+                <div class="content">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+        </div>
+        <!-- fullcalender -->
         <div class="display">
         <div class="row width" id="marginleft2"> <!---->
             <div class="col-12 col-xl-4"> <!---->
@@ -448,7 +609,7 @@
                     <div class="card-body p-3">
                         <div class="row gx-4">
                             <div class="col-auto">
-                                <div class="avatar position-relative " style="width: 60px !important; height: 74px !important;">
+                                <div class="avatar position-relative " style="width: 60px; height: 74px;">
                                     <img src="<%=rList.get(i).getBoard_writer_profile()%>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                                 </div>
                             </div>
@@ -462,7 +623,7 @@
                         </div>
                     </div>
 
-                    <div class="card-body p-3" style="padding-bottom: 0px !important;">
+                    <div class="card-body p-3" style="padding-bottom: 0px ">
                         <%=rList.get(i).getBoard_contents()%>
                         <br>
                         <br>
@@ -546,7 +707,7 @@
                     <hr>
                     <div class="row gx-4">
                         <div class="col-auto">
-                            <div class="avatar position-relative" style="width: 50px !important; height: 74px !important;">
+                            <div class="avatar position-relative" style="width: 50px;  height: 74px;">
                                 <img src="<%=rList.get(i).getReviews().get(a).getComment_writer_profile()%>" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                             </div>
                         </div>
@@ -666,7 +827,10 @@
                                 <h6 class="mb-0">과제목록</h6>
                             </div>
                             <div class="col-md-6 d-flex justify-content-end align-items-center">
+                                <button id="btn-modal" style="border: 0; outline: 0; background-color: white;">
                                 <i class="far fa-calendar-alt me-2"></i>
+                                </button>
+                                <div id="lorem-ipsum"></div>
                                 <small></small>
                             </div>
                         </div>
@@ -820,6 +984,74 @@
 
         ],
     })
+
+    const modal = document.getElementById("modal")
+    const navbar2 = document.getElementById("navbar2")
+    function modalOn() {
+        navbar2.style.display = "none"
+        modal.style.display = "flex"
+    }
+    function isModalOn() {
+        return modal.style.display === "flex"
+    }
+    function modalOff() {
+        navbar2.style.display = "flex"
+        modal.style.display = "none"
+    }
+    const btnModal = document.getElementById("btn-modal")
+    btnModal.addEventListener("click", e => {
+        modalOn()
+    })
+    const closeBtn = modal.querySelector(".close-area")
+    closeBtn.addEventListener("click", e => {
+        modalOff()
+    })
+    modal.addEventListener("click", e => {
+        const evTarget = e.target
+        if(evTarget.classList.contains("modal-overlay")) {
+            modalOff()
+        }
+    })
+    window.addEventListener("keyup", e => {
+        if(isModalOn() && e.key === "Escape") {
+            modalOff()
+        }
+    })
+
+    document.addEventListener('DOMContentLoaded', function() {
+        let calendarEl = document.getElementById('calendar');
+        let calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'ko',
+            headerToolbar: {
+                left: 'title',
+                center: '',
+                right: 'prev,next,today'
+            },
+            height: 'auto',
+            selectable: true,
+            weekends: true,
+            events: [
+                <%
+                       for(ScheduleDTO eDTO : eList) {
+                           String id = String.valueOf(eDTO.getAssignmentRoomSeq());
+                           String title = eDTO.getAssignmentRoomName();
+                           String start = eDTO.getAssignmentRegDate();
+                           String end = eDTO.getAssignmentDeadLine();
+                           %>
+                {
+                    id : '<%=id%>',
+                    title  : '<%=title%>',
+                    start  : '<%=start%>',
+                    end    : '<%=end%>'
+                },
+
+                <%
+                       }
+                   %>
+            ],
+        });
+        calendar.render();
+    });
 </script>
 
 </html>

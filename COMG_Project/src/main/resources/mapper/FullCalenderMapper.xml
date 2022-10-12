@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kopo.poly.persistance.mapper.FullCalenderMapper">
+
+
+    <select id="selectAssignMentList" parameterType="ScheduleReqDTO" resultType="ScheduleDTO">
+        SELECT ASSIGNMENT_ROOM_NAME as assignmentRoomName
+             , ASSIGNMENT_ROOM_SEQ as assignmentRoomSeq
+             , ASSIGNMENT_DEADLINE as assignmentDeadLine
+             , DATE_FORMAT(ASSIGNMENT_REGDATE,'%Y-%m-%d') as assignmentRegDate
+        FROM ASSIGNMENT_INFO
+        WHERE FK_GROUP_SEQ = #{groupSeq}
+    </select>
+
+
+
+    </mapper>

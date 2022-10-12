@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Roboto", helvetica, sans-serif;
+    overflow: hidden;
+}
+.container {
+    display: flex;
+}
+.nav {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    background: white;
+    border-bottom: 2px solid lightgray;
+    color: gray;
+    padding: 5px 0px;
+}
+.nav h1 {
+    margin-left: 80px;
+    margin-top: 15px;
+}
+.nav .fa-chevron-down {
+    position: absolute;
+    float: right;
+    top: 28px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
+.nav .fa-bell {
+    position: absolute;
+    float: right;
+    top: 20px;
+    right: 200px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.nav .fa-circle {
+    position: absolute;
+    display: inline;
+    font-size: 8px;
+    color: orange;
+    left: 17px;
+}
+.nav .fa-user-circle {
+    float: right;
+    font-size: 45px;
+    position: absolute;
+    top: 10px;
+    right: 120px;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+.nav .fa-user-circle p {
+    font-size: 16px;
+}
+.user-name {
+    position: absolute;
+    width: 100px;
+    height: 15px;
+    top: 20px;
+    right: 0px;
+    padding: 5px 10px;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+}
+.sidenav {
+    position: fixed;
+    top: 0px;
+    width: 60px;
+    height: 100vh;
+    background: slategray;
+    padding: 0px;
+    text-align: center;
+}
+.sidenav i {
+    color: white;
+    font-size: 30px;
+    padding: 13px;
+}
+.sidenav i:hover {
+    cursor: pointer;
+}
+.sidenav .active {
+    background-color: orange;
+    border-left: 5px solid white;
+    width: 28px;
+}
+.chats {
+    margin-top: 50px;
+    margin-left: 60px;
+    padding: 0px 5px;
+    min-width: 300px;
+    width: 32%;
+    height: 95vh;
+    background: white;
+    border-right: 2px solid lightgray;
+    overflow: scroll;
+}
+.chats::-webkit-scrollbar {
+    width: 0px;
+}
+.chats .chat-nav {
+    position: fixed;
+    margin: 25px 0px 0px 0px;
+    width: 30%;
+    height: auto;
+    background: white;
+    border-bottom: 2px solid lightgray;
+    box-shadow: 0 30px 20px -20px #ededed;
+}
+.chats .header {
+    font-family: "Open Sans", helvetica, sans-serif;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding-bottom: 1px;
+}
+.chats .header button {
+    float: right;
+    margin: 5px 10px 0px 0px;
+    border: none;
+    background: white;
+}
+.chats .header button i {
+    background: linear-gradient(orange, orange, darkorange);
+    padding: 8px 9px;
+    font-size: 18px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.chats .header button:focus {
+    outline: none;
+}
+.chats .group-list {
+    margin-top: 110px;
+}
+.chats .group {
+    display: flex;
+    height: 80px;
+    background: white;
+    margin: 5px 5px 20px 0px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0px #ededed;
+}
+.chats .active {
+    border-left: 5px solid orange;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+.chats .image {
+    margin: auto 15px;
+}
+.profile {
+    border-radius: 50%;
+    margin: 10px -5px;
+    height: 50px;
+    width: 50px;
+}
+.chats .image i {
+    font-size: 50px;
+    color: skyblue;
+}
+.group-name {
+    background: white;
+    width: 100%;
+    padding: 0px 15px 0px 0px;
+}
+.group-name p {
+    font-size: 15px;
+    color: gray;
+}
+.group-name .title {
+    color: black;
+    font-size: 20px;
+    margin-bottom: -10px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+.group-name p .n {
+    background: orange;
+    color: white;
+    padding: 2px 6px;
+    float: right;
+    border-radius: 50%;
+}
+.group-name .title .date {
+    float: right;
+}
+.chat-group {
+    display: flex;
+    height: 60px;
+    width: 95%;
+    background: lightgray;
+    border: 2px solid lightgray;
+    margin: 10px auto;
+    border-radius: 5px;
+    box-shadow: 5px 10px 10px #dedede;
+}
+.chat-group .fa-user-circle {
+    margin: 10px;
+    font-size: 40px;
+    border-radius: 18px;
+    background-color: white;
+}
+.chat-container {
+    padding-top: 65px;
+    width: 70%;
+    height: 94vh;
+    background-color: white;
+    overflow: scroll;
+}
+.chat-container::-webkit-scrollbar {
+    width: 0px;
+}
+.chat-room {
+    margin-bottom: 200px;
+    margin-top: 110px;
+}
+.chatroom-nav {
+    position: fixed;
+    display: flex;
+    height: 65px;
+    width: 70%;
+    background: white;
+    padding: 5px 20px;
+    margin-top: -103px;
+    box-shadow: 0 20px 20px -20px #dedede;
+    border-bottom: 2px solid lightgray;
+    border-left: 2px solid lightgray;
+}
+.chatroom-nav .image {
+    border-radius: 50%;
+    margin-top: 8px;
+}
+.chatroom-nav div:nth-child(2) p {
+    margin-top: 18px;
+    padding-left: 12px;
+    font-family: "Open sans", helvetica, sans-serif;
+    font-size: 20px;
+}
+.chatroom-nav div:nth-child(3) {
+    margin-left: 60%;
+    margin-top: 5px;
+}
+.chatroom-nav i {
+    color: lightgray;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    padding-right: 10px;
+}
+.date {
+    text-align: center;
+    color: darkgray;
+    font-size: 15px;
+    font-family: "Open Sans", sans-serif;
+}
+.message {
+    background: white;
+    width: 95%;
+    height: auto;
+    margin: auto;
+    padding: 5px;
+    font-family: "Open Sans", sans-serif;
+}
+.blurb {
+    padding: 8px;
+    background: orange;
+    width: max-content;
+    max-width: 70%;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #dedede;
+}
+.odd-blurb {
+    padding: 8px;
+    background: gray;
+    color: white;
+    width: max-content;
+    max-width: 70%;
+    border-radius: 5px;
+    float: right;
+    text-align: left;
+    margin-bottom: 8px;
+    box-shadow: 5px 5px 5px #dedede;
+}
+.blurb, .old-blurb {
+    clear: both;
+}
+.chat-bar {
+    position: fixed;
+    bottom: 10px;
+    margin: 0 10px;
+    height: auto;
+    width: 60%;
+    border: 2px solid lightgray;
+    padding: 5px;
+    border-radius: 50px;
+    background: white;
+}
+.chat-bar i {
+    color: slategray;
+    font-size: 25px;
+    padding: 5px;
+}
+.text-container {
+    padding: 40px 20px;
+}
+.editable {
+    color: gray;
+}
+[contentEditable="true"]:empty:not(:focus):before {
+    content: attr(data-text);
+}
+.editable:focus {
+    outline: none;
+}
+.chat-bar i {
+    float: right;
+    margin: 5px;
+}
+.chat-bar i:hover {
+    cursor: pointer;
+}
+.chat-bar button {
+    border-radius: 50%;
+    position: relative;
+    border: none;
+    float: right;
+    height: 45px;
+    width: 45px;
+    background: orange;
+}
+.chat-bar button .fas {
+    position: absolute;
+    top: 0px;
+    left: -2px;
+    color: white;
+    font-size: 25px;
+}
+.chat-bar button:hover {
+    cursor: pointer;
+}
+.chat-bar button:focus {
+    outline: none;
+}
+.chat-bar button:active {
+    box-shadow: 8px 8px 5px #ededed;
+    background-color: darkorange;
+}
+.lower-icons {
+    padding-top: 50vh;
+}

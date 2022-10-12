@@ -101,6 +101,26 @@
 			})
 		}
 
+		function logout() {
+			$.ajax({
+				url: '/COMG/logout',
+				type: "GET",
+
+				success: function(data){
+					if(data == 1){
+						console.log("로그아웃 성공");
+
+					}else{
+						console.log("로그아웃 실패");
+					}
+				},
+				error: function (){
+					console.log("아작스 에러 : 로그아웃 실패");
+					swal('내부 에러!', "다시한번 시도해주세요.", 'warning');
+					return false;
+				}
+			});
+		}
 	</script>
 </head>
 
@@ -122,9 +142,9 @@
 			<div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
 				<div class="ms-md-auto pe-md-3 d-flex align-items-center">
 					<div class="input-group">
-						<a href="/COMG/logout" class="nav-link text-black font-weight-bold px-0">
-							<i class="fas fa-key opacity-6 text-black me-1"></i>
-							<span class="d-sm-inline d-none">로그아웃</span>
+						<a href="https://kauth.kakao.com/oauth/logout?client_id=3f3dc7847eecf953477701d6680035e2&logout_redirect_uri=http://localhost:11000/" class="nav-link text-white font-weight-bold px-0">
+							<i class="fas fa-key opacity-6 text-white me-1"></i>
+							<span class="d-sm-inline d-none" onclick="logout()">로그아웃</span>
 						</a>
 					</div>
 				</div>

@@ -12,12 +12,14 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="kopo.poly.dto.CGroupDTO"%>
 <%@ page import="kopo.poly.dto.CFileDTO" %>
+<%@ page import="java.util.Objects" %>
 <%
     //컨트롤러에서 전달받은 값
     String user_name = CmmUtil.nvl((String)request.getAttribute("user_name"));
     String student_id = CmmUtil.nvl((String)request.getAttribute("student_id"));
     String user_id = CmmUtil.nvl((String)request.getAttribute("user_id"));
     String user_profile = CmmUtil.nvl((String)request.getAttribute("user_profile"));
+    String kakaoId = CmmUtil.nvl((String)request.getAttribute("kakaoId"));
     List<CGroupDTO> rList = (List<CGroupDTO>) request.getAttribute("rList");
     int i = 0;
 %>
@@ -154,6 +156,27 @@
         });
     }
 
+
+    function logout() {
+        $.ajax({
+            url: '/COMG/logout',
+            type: "GET",
+
+            success: function(data){
+                if(data == 1){
+                    console.log("로그아웃 성공");
+
+                }else{
+                    console.log("로그아웃 실패");
+                }
+            },
+            error: function (){
+                console.log("아작스 에러 : 로그아웃 실패");
+                swal('내부 에러!', "다시한번 시도해주세요.", 'warning');
+                return false;
+            }
+        });
+    }
 </script>
 
 </head>
@@ -176,9 +199,9 @@
             <div class="collapse navbar-collapse me-md-0 me-sm-4 mt-sm-0 mt-2" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
                     <div class="input-group">
-                        <a href="/COMG/logout" class="nav-link text-white font-weight-bold px-0">
+                        <a href="https://kauth.kakao.com/oauth/logout?client_id=3f3dc7847eecf953477701d6680035e2&logout_redirect_uri=http://localhost:11000/" class="nav-link text-white font-weight-bold px-0">
                             <i class="fas fa-key opacity-6 text-white me-1"></i>
-                            <span class="d-sm-inline d-none">로그아웃</span>
+                            <span class="d-sm-inline d-none" onclick="logout()">로그아웃</span>
                         </a>
                     </div>
                 </div>
@@ -285,6 +308,7 @@
     <div class="container-fluid px-2 px-md-4">
         <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('/img/curved-images/curved9.jpg');">
             <span class="mask  bg-gradient-primary  opacity-6"></span>
+            <%@include file="../weather/weather.jsp"%>
         </div>
         <div class="card card-body mx-3 mx-md-4 mt-n6">
             <div class="row gx-4 mb-2">
@@ -350,6 +374,13 @@
 
                                 <hr class="horizontal gray-light my-4">
                                 <ul class="list-group">
+                                    <%
+                                        if(Objects.equals(kakaoId, "0")){
+                                    %>
+                                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">카카오 계정연동</strong><br><a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=3f3dc7847eecf953477701d6680035e2&redirect_uri=http://localhost:11000/kakaoJoinPage"><img src="/img/kakao_login_medium_narrow.png"></a><br></li>
+                                    <%
+                                        }
+                                    %>
                                     <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">이름 :</strong> &nbsp; <input type="text" style="border: none" id="user_name" name="user_name" value="<%=user_name%>" readonly></li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">학번 :</strong> &nbsp; <input type="text" style="border: none" id="student_id" name="student_id" value="<%=student_id%>"></li>
                                     <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">아이디:</strong> &nbsp; <input type="text" style="border: none" id="user_id" name="user_id" value="<%=user_id%>" readonly></li>

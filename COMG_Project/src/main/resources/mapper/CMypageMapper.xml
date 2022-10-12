@@ -5,7 +5,7 @@
 <mapper namespace="kopo.poly.persistance.mapper.ICMypageMapper">
 
     <select id="getUserInfo" parameterType="CUserDTO" resultType="CUserDTO">
-        SELECT * FROM USER_INFO
+        SELECT user_seq, user_id, user_password, user_name, student_id, reg_id, reg_date, chg_id, chd_date, file_seq, kakao_id as kakaoId, cust_room FROM USER_INFO
         WHERE USER_SEQ = #{user_seq}
     </select>
 

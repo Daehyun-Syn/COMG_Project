@@ -98,6 +98,7 @@ public class CmypageController {
                     model.addAttribute("user_name", CmmUtil.nvl(fDTO.getUser_name()));
                     model.addAttribute("student_id", CmmUtil.nvl(fDTO.getStudent_id()));
                     model.addAttribute("user_id", CmmUtil.nvl(fDTO.getUser_id()));
+                    model.addAttribute("kakaoId", CmmUtil.nvl(fDTO.getKakaoId()));
                     String file_seq = CmmUtil.nvl(fDTO.getFile_seq());
                     pDTO = new CFileDTO();
                     pDTO.setFk_file_seq(file_seq);
